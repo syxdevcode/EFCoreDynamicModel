@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Infrastructure;
+using Microsoft.EntityFrameworkCore;
+using ModelLib;
 
 namespace EFCoreDynamicModel
 {
@@ -18,6 +21,7 @@ namespace EFCoreDynamicModel
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile("runtimemodelconfig.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -27,6 +31,14 @@ namespace EFCoreDynamicModel
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<RuntimeModelMetaConfig>(Configuration.GetSection("RuntimeModelMetaConfig"));
+
+            //获取数据库连接字符串
+            var sqlConnectionString = Configuration.GetConnectionString("Default");
+
+            //添加数据上下文
+            services.AddEntityFrameworkSqlServer().AddDbContext<DynamicModelDbContext>(options => options.UseSqlServer(sqlConnectionString));
+
             // Add framework services.
             services.AddMvc();
         }

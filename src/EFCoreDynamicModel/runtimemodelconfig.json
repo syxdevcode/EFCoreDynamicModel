@@ -1,0 +1,22 @@
+﻿{
+  "RuntimeModelMetaConfig": {
+    "Metas": [
+      {
+        "ModelId": 1,
+        "ModelName": "衣服",
+        "ClassName": "BareDiamond",
+
+        "ModelProperties": [
+          {
+            "Name": "尺寸",
+            "PropertyName": "Size"
+          },
+          {
+            "Name": "颜色",
+            "PropertyName": "Color"
+          }
+        ]
+      }
+    ]
+  }
+}
