@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace EFCoreDynamicModel
+namespace DynamicModel.Web
 {
     public class Startup
     {

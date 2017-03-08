@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Implement
 {
@@ -21,6 +20,7 @@ namespace Infrastructure.Implement
             //通过依赖注入方式获取到模型配置信息
             _config = config;
         }
+
         //动态编译结果的缓存，这样在获取动态类型时不用每次都编译一次
         public Dictionary<int, Type> Map
         {
@@ -36,8 +36,6 @@ namespace Infrastructure.Implement
                         {
                             //根据RuntimeModelMeta编译成类，具体实现看后面内容
                             var result = RuntimeTypeBuilder.Build(GetTypeMetaFromModelMeta(item));
-
-
 
                             //编译结果放到缓存中，方便下次使用
                             _resultMap.Add(item.ModelId, result);

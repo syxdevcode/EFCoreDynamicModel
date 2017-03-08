@@ -4,7 +4,7 @@ using Infrastructure.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace EFCoreDynamicModel.Controllers
+namespace DynamicModel.Web.Controllers
 {
     public class HomeController : Controller
     {
