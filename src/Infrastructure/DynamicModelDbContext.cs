@@ -1,33 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal;
+using Microsoft.Extensions.Caching.Memory;
 using ModelLib;
+using System;
 
 namespace Infrastructure
 {
-    public class DynamicModelDbContext: DbContext
+    public class DynamicModelDbContext : DbContext
     {
         private readonly IRuntimeModelProvider _modelProvider;
+        private readonly ICoreConventionSetBuilder _builder;
+        private readonly IMemoryCache _cache;
+        private static string DynamicCacheKey = "DynamicModel";
 
-        public DynamicModelDbContext(DbContextOptions<DynamicModelDbContext> options, IRuntimeModelProvider modelProvider) : base(options)
+        public DynamicModelDbContext(DbContextOptions<DynamicModelDbContext> options, ICoreConventionSetBuilder builder, IRuntimeModelProvider modelProvider, IMemoryCache cache) : base(options)
         {
             _modelProvider = modelProvider;
+            _builder = builder;
+            _cache = cache;
         }
 
-        public DbSet<RuntimeModelMeta> Metas { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //_modelProvider就是我们上面定义的IRuntimeModelProvider,通过依赖注入方式获取到实例
-            Type[] runtimeModels = _modelProvider.GetTypes("product");
-            foreach (var item in runtimeModels)
+            //直接从缓存读取model，如果不存在再build
+            IMutableModel model = _cache.GetOrCreate(DynamicCacheKey, entry =>
             {
-                builder.Model.AddEntityType(item);
-            }
+                var modelBuilder = new ModelBuilder(_builder.CreateConventionSet());
+                Type[] runtimeModels = _modelProvider.GetTypes();
+                foreach (var item in runtimeModels)
+                {
+                    modelBuilder.Model.AddEntityType(item).SqlServer().TableName = item.Name;
+                }
+                _cache.Set(DynamicCacheKey, modelBuilder.Model);
+                return modelBuilder.Model;
+            });
 
-            base.OnModelCreating(builder);
+            optionsBuilder.UseModel(model);
+            base.OnConfiguring(optionsBuilder);
         }
     }
 }

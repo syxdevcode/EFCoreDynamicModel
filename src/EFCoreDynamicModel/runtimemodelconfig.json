@@ -6,14 +6,18 @@
         "ModelName": "衣服",
         "ClassName": "BareDiamond",
 
-        "ModelProperties": [
+        "Properties": [
           {
             "Name": "尺寸",
-            "PropertyName": "Size"
+            "PropertyName": "Size",
+            "ValueType": "string",
+            "Length": "20"
           },
           {
             "Name": "颜色",
-            "PropertyName": "Color"
+            "PropertyName": "Color",
+            "ValueType": "string",
+            "Length": "20"
           }
         ]
       }

@@ -5,7 +5,7 @@
         public int ModelId { get; set; }
         public string ModelName { get; set; }//模型名称
         public string ClassName { get; set; }//类名称
-        public string Properties { get; set; }
+        public ModelPropertyMeta[] Properties { get; set; }
 
         public class ModelPropertyMeta
         {

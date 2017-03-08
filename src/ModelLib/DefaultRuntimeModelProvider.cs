@@ -74,7 +74,7 @@ namespace ModelLib
             typeMeta.BaseType = typeof(DynamicEntity);
             typeMeta.TypeName = meta.ClassName;
 
-            foreach (var item in meta.GetProperties())
+            foreach (var item in meta.Properties)
             {
                 TypeMeta.TypePropertyMeta pmeta = new TypeMeta.TypePropertyMeta();
                 pmeta.PropertyName = item.PropertyName;

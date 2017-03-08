@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Infrastructure;
-using Microsoft.EntityFrameworkCore;
 using ModelLib;
 
 namespace EFCoreDynamicModel
@@ -31,13 +28,27 @@ namespace EFCoreDynamicModel
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //注入获取Provider类
+            services.AddSingleton<IRuntimeModelProvider,DefaultRuntimeModelProvider>();
+
             services.Configure<RuntimeModelMetaConfig>(Configuration.GetSection("RuntimeModelMetaConfig"));
 
+            services.AddEntityFramework().AddDbContext<DynamicModelDbContext>(option =>
+            {
+                option.UseSqlServer(Configuration.GetConnectionString("Default"), sql =>
+                {
+                    sql.UseRowNumberForPaging();
+                    sql.MaxBatchSize(50);
+                });
+            });
+
+            /*
             //获取数据库连接字符串
             var sqlConnectionString = Configuration.GetConnectionString("Default");
 
             //添加数据上下文
             services.AddEntityFrameworkSqlServer().AddDbContext<DynamicModelDbContext>(options => options.UseSqlServer(sqlConnectionString));
+            */
 
             // Add framework services.
             services.AddMvc();

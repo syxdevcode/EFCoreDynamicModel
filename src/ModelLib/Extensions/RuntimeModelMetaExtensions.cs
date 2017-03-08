@@ -8,6 +8,7 @@ namespace ModelLib.Extensions
 {
     public static class RuntimeModelMetaExtensions
     {
+        /*
         //反序列化获得集合
         public static RuntimeModelMeta.ModelPropertyMeta[] GetProperties(this RuntimeModelMeta meta)
         {
@@ -23,5 +24,6 @@ namespace ModelLib.Extensions
         {
             meta.Properties = JsonConvert.SerializeObject(properties);
         }
+        */
     }
 }

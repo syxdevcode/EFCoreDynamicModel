@@ -9,12 +9,12 @@ using Microsoft.EntityFrameworkCore;
 using Infrastructure;
 using ModelLib.Extensions;
 
-namespace EFCoreDynamicModel.Extensions
+namespace Infrastructure
 {
     public static class ModelDbContextExtensions
     {
         //添加字段
-        public static void AddField(this DynamicModelDbContext context, RuntimeModelMeta model, RuntimeModelMeta.ModelPropertyMeta property)
+        public static void AddField(this ModelDbContext context, RuntimeModelMeta model, RuntimeModelMeta.ModelPropertyMeta property)
         {
             using (DbConnection conn = context.Database.GetDbConnection())
             {
@@ -46,7 +46,7 @@ namespace EFCoreDynamicModel.Extensions
             }
         }
         //删除字段
-        public static void RemoveField(this DynamicModelDbContext context, RuntimeModelMeta model, string property)
+        public static void RemoveField(this ModelDbContext context, RuntimeModelMeta model, string property)
         {
             using (DbConnection conn = context.Database.GetDbConnection())
             {
@@ -62,7 +62,7 @@ namespace EFCoreDynamicModel.Extensions
             }
         }
         //创建模型表
-        public static void CreateModel(this DynamicModelDbContext context, RuntimeModelMeta model)
+        public static void CreateModel(this ModelDbContext context, RuntimeModelMeta model)
         {
             using (DbConnection conn = context.Database.GetDbConnection())
             {
@@ -74,7 +74,7 @@ namespace EFCoreDynamicModel.Extensions
                 DbCommand createTableCmd = conn.CreateCommand();
                 createTableCmd.CommandText = $"create table {model.ClassName}";
                 createTableCmd.CommandText += "{id int identity(1,1)";
-                foreach (var p in model.GetProperties())
+                foreach (var p in model.Properties)
                 {
                     createTableCmd.CommandText += $",{p.PropertyName} ";
                     switch (p.ValueType)
