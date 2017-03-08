@@ -1,4 +1,7 @@
-﻿using Infrastructure;
+﻿using DynamicModel.Domain;
+using Infrastructure;
+using Infrastructure.Implement;
+using Infrastructure.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -6,7 +9,6 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using ModelLib;
 
 namespace EFCoreDynamicModel
 {
@@ -42,13 +44,13 @@ namespace EFCoreDynamicModel
                 });
             });
 
-            /*
+
             //获取数据库连接字符串
             var sqlConnectionString = Configuration.GetConnectionString("Default");
 
             //添加数据上下文
-            services.AddEntityFrameworkSqlServer().AddDbContext<DynamicModelDbContext>(options => options.UseSqlServer(sqlConnectionString));
-            */
+            services.AddEntityFrameworkSqlServer().AddDbContext<ModelDbContext>(options => options.UseSqlServer(sqlConnectionString));
+
 
             // Add framework services.
             services.AddMvc();

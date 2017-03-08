@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DynamicModel.Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Threading.Tasks;
 
-namespace ModelLib
+namespace DynamicModel.Lib
 {
     public class RuntimeTypeBuilder
     {

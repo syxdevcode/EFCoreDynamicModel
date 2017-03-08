@@ -7,8 +7,8 @@
 
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>651444ce-07ab-4eb9-bce7-20f32b46264f</ProjectGuid>
-    <RootNamespace>ModelLib</RootNamespace>
+    <ProjectGuid>08d01bfa-beb6-4baa-9bd8-94e118dca196</ProjectGuid>
+    <RootNamespace>DynamicModel.Domain</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>

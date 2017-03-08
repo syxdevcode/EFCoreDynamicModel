@@ -1,14 +1,12 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ModelLib.Extensions
+namespace Infrastructure.Extensions
 {
-    public static class RuntimeModelMetaExtensions
-    {
-        /*
+    public class RuntimeModelMetaExtensions
+    {/*
         //反序列化获得集合
         public static RuntimeModelMeta.ModelPropertyMeta[] GetProperties(this RuntimeModelMeta meta)
         {

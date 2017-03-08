@@ -1,6 +1,7 @@
-﻿using Infrastructure;
+﻿using DynamicModel.Domain;
+using Infrastructure;
+using Infrastructure.Interface;
 using Microsoft.AspNetCore.Mvc;
-using ModelLib;
 using System;
 
 namespace EFCoreDynamicModel.Controllers
@@ -25,11 +26,11 @@ namespace EFCoreDynamicModel.Controllers
             entity["Name"] = "名称";
             entity["Size"] = "10*20";
             entity["Color"] = "red";
+
+            //_modeldbContext.CreateModel();
+
             _dbContext.Add(entity);
             _dbContext.SaveChanges();
-
-
-            DynamicModelDbContext.Add(entity);
 
             return View();
         }

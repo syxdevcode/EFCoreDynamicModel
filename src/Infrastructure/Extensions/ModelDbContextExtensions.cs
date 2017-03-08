@@ -1,15 +1,12 @@
-﻿using ModelLib;
+﻿using DynamicModel.Domain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Reflection;
-using Microsoft.EntityFrameworkCore;
-using Infrastructure;
-using ModelLib.Extensions;
 
-namespace Infrastructure
+namespace Infrastructure.Extensions
 {
     public static class ModelDbContextExtensions
     {

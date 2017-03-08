@@ -1,19 +1,21 @@
-﻿using Microsoft.Extensions.Options;
+﻿using DynamicModel.Domain;
+using DynamicModel.Lib;
+using Infrastructure.Interface;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Reflection;
-using ModelLib.Extensions;
 
-namespace ModelLib
+namespace Infrastructure.Implement
 {
-    public class DefaultRuntimeModelProvider: IRuntimeModelProvider
+    public class DefaultRuntimeModelProvider : IRuntimeModelProvider
     {
         private Dictionary<int, Type> _resultMap;
         private readonly IOptions<RuntimeModelMetaConfig> _config;
         private object _lock = new object();
+
         public DefaultRuntimeModelProvider(IOptions<RuntimeModelMetaConfig> config)
         {
             //通过依赖注入方式获取到模型配置信息
@@ -34,6 +36,9 @@ namespace ModelLib
                         {
                             //根据RuntimeModelMeta编译成类，具体实现看后面内容
                             var result = RuntimeTypeBuilder.Build(GetTypeMetaFromModelMeta(item));
+
+
+
                             //编译结果放到缓存中，方便下次使用
                             _resultMap.Add(item.ModelId, result);
                         }
@@ -62,7 +67,7 @@ namespace ModelLib
 
         public Type[] GetTypes(string modelName)
         {
-            int[] modelIds = _config.Value.Metas.Where(m => m.ModelName==modelName).Select(o=>o.ModelId).ToArray();
+            int[] modelIds = _config.Value.Metas.Where(m => m.ModelName == modelName).Select(o => o.ModelId).ToArray();
             return Map.Where(m => modelIds.Contains(m.Key)).Select(m => m.Value).ToArray();
         }
 

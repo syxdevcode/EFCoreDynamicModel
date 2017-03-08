@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Reflection;
 
-namespace ModelLib
+namespace DynamicModel.Domain
 {
     public class DynamicEntity
     {
