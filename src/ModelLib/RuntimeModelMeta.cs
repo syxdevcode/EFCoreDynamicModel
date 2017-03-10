@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DynamicModel.Domain
+﻿namespace ModelLib
 {
     public class RuntimeModelMeta
     {
-        [Key]
         public int ModelId { get; set; }
         public string ModelName { get; set; }//模型名称
         public string ClassName { get; set; }//类名称
@@ -16,9 +9,6 @@ namespace DynamicModel.Domain
 
         public class ModelPropertyMeta
         {
-            [Key]
-            public int Id { get; set; }
-
             public string Name { get; set; }//对应的中文名称
             public string PropertyName { get; set; } //类属性名称
             public int Length { get; set; }//数据长度，主要用于string类型
