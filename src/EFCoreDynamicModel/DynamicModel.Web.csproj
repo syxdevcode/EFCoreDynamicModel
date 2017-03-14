@@ -3,11 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp1.0</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
-    <AssemblyName>EFCoreDynamicModel</AssemblyName>
+    <AssemblyName>DynamicModel.Web</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>EFCoreDynamicModel</PackageId>
     <RuntimeFrameworkVersion>1.0.4</RuntimeFrameworkVersion>
     <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
+    <RootNamespace>DynamicModel.Web</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,9 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     <ProjectReference Include="..\DynamicModel.Lib\DynamicModel.Lib.csproj" />
     <ProjectReference Include="..\DynamicModel.Domain\DynamicModel.Domain.csproj" />
+    <ProjectReference Include="..\Infrastructure\DynamicModel.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

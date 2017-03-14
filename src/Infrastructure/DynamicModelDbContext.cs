@@ -1,11 +1,11 @@
-﻿using Infrastructure.Interface;
+﻿using DynamicModel.Infrastructure.Interface;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 
-namespace Infrastructure
+namespace DynamicModel.Infrastructure
 {
     public class DynamicModelDbContext : DbContext
     {

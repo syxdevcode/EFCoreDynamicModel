@@ -1,7 +1,7 @@
 ﻿using DynamicModel.Domain;
-using Infrastructure;
-using Infrastructure.Implement;
-using Infrastructure.Interface;
+using DynamicModel.Infrastructure;
+using DynamicModel.Infrastructure.Implement;
+using DynamicModel.Infrastructure.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;

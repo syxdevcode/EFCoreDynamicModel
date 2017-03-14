@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Infrastructure
+namespace DynamicModel.Infrastructure
 {
     public class ModelDbContext : DbContext
     {

@@ -6,11 +6,16 @@ using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Extensions
+namespace DynamicModel.Infrastructure.Extensions
 {
     public static class ModelDbContextExtensions
     {
-        //添加字段
+        /// <summary>
+        /// 添加字段
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="model"></param>
+        /// <param name="property"></param>
         public static void AddField(this ModelDbContext context, RuntimeModelMeta model, RuntimeModelMeta.ModelPropertyMeta property)
         {
             using (DbConnection conn = context.Database.GetDbConnection())
@@ -42,7 +47,13 @@ namespace Infrastructure.Extensions
                 addFieldCmd.ExecuteNonQuery();
             }
         }
-        //删除字段
+
+        /// <summary>
+        /// 删除字段
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="model"></param>
+        /// <param name="property"></param>
         public static void RemoveField(this ModelDbContext context, RuntimeModelMeta model, string property)
         {
             using (DbConnection conn = context.Database.GetDbConnection())
@@ -58,7 +69,12 @@ namespace Infrastructure.Extensions
                 removeFieldCmd.ExecuteNonQuery();
             }
         }
-        //创建模型表
+
+        /// <summary>
+        /// 创建模型表
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="model"></param>
         public static void CreateModel(this ModelDbContext context, RuntimeModelMeta model)
         {
             using (DbConnection conn = context.Database.GetDbConnection())

@@ -1,14 +1,14 @@
 ﻿using DynamicModel.Domain;
 using DynamicModel.Lib;
-using Infrastructure.Extensions;
-using Infrastructure.Interface;
+using DynamicModel.Infrastructure.Extensions;
+using DynamicModel.Infrastructure.Interface;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace Infrastructure.Implement
+namespace DynamicModel.Infrastructure.Implement
 {
     public class DefaultRuntimeModelProvider : IRuntimeModelProvider
     {

@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FA15F643-19D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EEE384A8-A665-4667-8A82-16D9A41CC9BB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreDynamicModel", "src\EFCoreDynamicModel\EFCoreDynamicModel.csproj", "{C807D1B6-A8CD-4276-9C40-271A0B2A1C21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicModel.Web", "src\EFCoreDynamicModel\DynamicModel.Web.csproj", "{C807D1B6-A8CD-4276-9C40-271A0B2A1C21}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{435E6A31-1D10-4D38-B9E1-A6E1453769F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicModel.Infrastructure", "src\Infrastructure\DynamicModel.Infrastructure.csproj", "{435E6A31-1D10-4D38-B9E1-A6E1453769F2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicModel.Domain", "src\DynamicModel.Domain\DynamicModel.Domain.csproj", "{08D01BFA-BEB6-4BAA-9BD8-94E118DCA196}"
 EndProject
