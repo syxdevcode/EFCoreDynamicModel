@@ -8,4 +8,12 @@
 
 
 
+多个Context需要使用 -Context(dotnet 命令) context名称，
+例如：
 
+
+Add-Migration Init -Context ModelDbContext
+Update-Database -Context ModelDbContext
+
+Add-Migration Init -Context DynamicModelDbContext
+Update-Database -Context DynamicModelDbContext

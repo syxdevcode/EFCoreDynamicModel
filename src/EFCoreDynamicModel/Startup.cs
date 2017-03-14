@@ -45,11 +45,11 @@ namespace DynamicModel.Web
             });
 
 
-            ////获取数据库连接字符串
-            //var sqlConnectionString = Configuration.GetConnectionString("ModelDb");
+            //获取数据库连接字符串
+            var sqlConnectionString = Configuration.GetConnectionString("ModelDb");
 
-            ////添加数据上下文
-            //services.AddEntityFrameworkSqlServer().AddDbContext<ModelDbContext>(options => options.UseSqlServer(sqlConnectionString));
+            //添加数据上下文
+            services.AddEntityFrameworkSqlServer().AddDbContext<ModelDbContext>(options => options.UseSqlServer(sqlConnectionString));
 
 
             // Add framework services.
