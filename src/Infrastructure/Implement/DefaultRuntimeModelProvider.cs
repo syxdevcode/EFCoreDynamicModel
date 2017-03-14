@@ -1,5 +1,6 @@
 ﻿using DynamicModel.Domain;
 using DynamicModel.Lib;
+using Infrastructure.Extensions;
 using Infrastructure.Interface;
 using Microsoft.Extensions.Options;
 using System;
@@ -12,13 +13,13 @@ namespace Infrastructure.Implement
     public class DefaultRuntimeModelProvider : IRuntimeModelProvider
     {
         private Dictionary<int, Type> _resultMap;
-        private readonly IOptions<RuntimeModelMetaConfig> _config;
+        private readonly ModelDbContext _dbContext;
         private object _lock = new object();
 
-        public DefaultRuntimeModelProvider(IOptions<RuntimeModelMetaConfig> config)
+        public DefaultRuntimeModelProvider(ModelDbContext dbContext)
         {
             //通过依赖注入方式获取到模型配置信息
-            _config = config;
+            _dbContext = dbContext;
         }
 
         //动态编译结果的缓存，这样在获取动态类型时不用每次都编译一次
@@ -32,7 +33,7 @@ namespace Infrastructure.Implement
                     {
                         _resultMap = new Dictionary<int, Type>();
 
-                        foreach (var item in _config.Value.Metas)
+                        foreach (var item in _dbContext.Metas)
                         {
                             //根据RuntimeModelMeta编译成类，具体实现看后面内容
                             var result = RuntimeTypeBuilder.Build(GetTypeMetaFromModelMeta(item));
@@ -59,13 +60,13 @@ namespace Infrastructure.Implement
 
         public Type[] GetTypes()
         {
-            int[] modelIds = _config.Value.Metas.Select(m => m.ModelId).ToArray();
+            int[] modelIds = _dbContext.Metas.Select(m => m.ModelId).ToArray();
             return Map.Where(m => modelIds.Contains(m.Key)).Select(m => m.Value).ToArray();
         }
 
         public Type[] GetTypes(string modelName)
         {
-            int[] modelIds = _config.Value.Metas.Where(m => m.ModelName == modelName).Select(o => o.ModelId).ToArray();
+            int[] modelIds = _dbContext.Metas.Where(m => m.ModelName == modelName).Select(o => o.ModelId).ToArray();
             return Map.Where(m => modelIds.Contains(m.Key)).Select(m => m.Value).ToArray();
         }
 
@@ -77,7 +78,7 @@ namespace Infrastructure.Implement
             typeMeta.BaseType = typeof(DynamicEntity);
             typeMeta.TypeName = meta.ClassName;
 
-            foreach (var item in meta.Properties)
+            foreach (var item in meta.GetProperties())
             {
                 TypeMeta.TypePropertyMeta pmeta = new TypeMeta.TypePropertyMeta();
                 pmeta.PropertyName = item.PropertyName;

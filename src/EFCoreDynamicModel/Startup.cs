@@ -33,7 +33,7 @@ namespace DynamicModel.Web
             //注入获取Provider类
             services.AddSingleton<IRuntimeModelProvider,DefaultRuntimeModelProvider>();
 
-            services.Configure<RuntimeModelMetaConfig>(Configuration.GetSection("RuntimeModelMetaConfig"));
+            //services.Configure<RuntimeModelMetaConfig>(Configuration.GetSection("RuntimeModelMetaConfig"));
 
             services.AddEntityFramework().AddDbContext<DynamicModelDbContext>(option =>
             {

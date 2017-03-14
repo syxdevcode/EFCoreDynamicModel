@@ -5,12 +5,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Infrastructure;
 
-namespace Infrastructure.Migrations
+namespace Infrastructure.Migrations.DynamicModelDb
 {
     [DbContext(typeof(DynamicModelDbContext))]
-    partial class DynamicModelDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170314063651_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 
             modelBuilder.Entity("BareDiamond", b =>

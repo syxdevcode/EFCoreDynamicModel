@@ -71,7 +71,7 @@ namespace Infrastructure.Extensions
                 DbCommand createTableCmd = conn.CreateCommand();
                 createTableCmd.CommandText = $"create table {model.ClassName}";
                 createTableCmd.CommandText += "(id int identity(1,1)";
-                foreach (var p in model.Properties)
+                foreach (var p in model.GetProperties())
                 {
                     createTableCmd.CommandText += $",{p.PropertyName} ";
                     switch (p.ValueType)

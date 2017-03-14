@@ -1,22 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FA15F643-19D6-4941-85DF-9AEA0519C33E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EEE384A8-A665-4667-8A82-16D9A41CC9BB}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DynamicModel.Web", "src\EFCoreDynamicModel\DynamicModel.Web.xproj", "{C807D1B6-A8CD-4276-9C40-271A0B2A1C21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreDynamicModel", "src\EFCoreDynamicModel\EFCoreDynamicModel.csproj", "{C807D1B6-A8CD-4276-9C40-271A0B2A1C21}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Infrastructure", "src\Infrastructure\Infrastructure.xproj", "{435E6A31-1D10-4D38-B9E1-A6E1453769F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{435E6A31-1D10-4D38-B9E1-A6E1453769F2}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DynamicModel.Domain", "src\DynamicModel.Domain\DynamicModel.Domain.xproj", "{08D01BFA-BEB6-4BAA-9BD8-94E118DCA196}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicModel.Domain", "src\DynamicModel.Domain\DynamicModel.Domain.csproj", "{08D01BFA-BEB6-4BAA-9BD8-94E118DCA196}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DynamicModel.Lib", "src\DynamicModel.Lib\DynamicModel.Lib.xproj", "{BF3A82FD-524E-4D91-9D1B-6DDE815FE176}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicModel.Lib", "src\DynamicModel.Lib\DynamicModel.Lib.csproj", "{BF3A82FD-524E-4D91-9D1B-6DDE815FE176}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
