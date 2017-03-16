@@ -56,6 +56,6 @@
     <DotNetCliToolReference Include="BundlerMinifier.Core" Version="2.2.301" />
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties runtimemodelconfig_1json__JSONSchema="http://json.schemastore.org/babelrc" /></VisualStudio></ProjectExtensions>
 
 </Project>

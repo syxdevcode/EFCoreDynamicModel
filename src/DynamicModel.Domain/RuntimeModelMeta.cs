@@ -17,6 +17,9 @@ namespace DynamicModel.Domain
 
         public string Properties { get; set; }
 
+        [Timestamp]
+        public byte[] Version { get; set; }
+
         public class ModelPropertyMeta
         {
             [Key]

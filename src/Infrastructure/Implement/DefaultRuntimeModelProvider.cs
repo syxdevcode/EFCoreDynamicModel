@@ -1,8 +1,7 @@
 ﻿using DynamicModel.Domain;
-using DynamicModel.Lib;
 using DynamicModel.Infrastructure.Extensions;
 using DynamicModel.Infrastructure.Interface;
-using Microsoft.Extensions.Options;
+using DynamicModel.Lib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -137,6 +136,10 @@ namespace DynamicModel.Infrastructure.Implement
                     {
                         pmeta.PropertyType = typeof(bool);
                     }
+                }
+                else if (item.ValueType == "timestamp")
+                {
+                    pmeta.PropertyType = typeof(byte[]);
                 }
                 typeMeta.PropertyMetas.Add(pmeta);
             }

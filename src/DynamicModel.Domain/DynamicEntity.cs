@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 using System.Reflection;
 
 namespace DynamicModel.Domain
@@ -11,14 +9,17 @@ namespace DynamicModel.Domain
     public class DynamicEntity
     {
         private Dictionary<object, object> _attrs;
+
         public DynamicEntity()
         {
             _attrs = new Dictionary<object, object>();
         }
+
         public DynamicEntity(Dictionary<object, object> dic)
         {
             _attrs = dic;
         }
+
         public static DynamicEntity Parse(object obj)
         {
             DynamicEntity model = new DynamicEntity();
@@ -28,6 +29,7 @@ namespace DynamicModel.Domain
             }
             return model;
         }
+
         public T GetValue<T>(string field)
         {
             object obj2 = null;
@@ -62,6 +64,7 @@ namespace DynamicModel.Domain
                 return _attrs;
             }
         }
+
         //提供索引方式操作属性值
         public object this[string key]
         {
@@ -86,6 +89,7 @@ namespace DynamicModel.Domain
                 }
             }
         }
+
         [JsonIgnore]
         public string[] Keys
         {
@@ -106,6 +110,7 @@ namespace DynamicModel.Domain
                 SetValue("Id", value);
             }
         }
+
         [Timestamp]
         [JsonIgnore]
         public byte[] Version { get; set; }

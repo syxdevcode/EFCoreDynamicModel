@@ -1,15 +1,15 @@
 ﻿using DynamicModel.Domain;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DynamicModel.Infrastructure.Extensions
 {
     public static class RuntimeModelMetaExtensions
     {
-        //反序列化获得集合
+        /// <summary>
+        /// 反序列化获得集合
+        /// </summary>
+        /// <param name="meta"></param>
+        /// <returns></returns>
         public static RuntimeModelMeta.ModelPropertyMeta[] GetProperties(this RuntimeModelMeta meta)
         {
             if (string.IsNullOrEmpty(meta.Properties))
@@ -20,7 +20,11 @@ namespace DynamicModel.Infrastructure.Extensions
             return JsonConvert.DeserializeObject<RuntimeModelMeta.ModelPropertyMeta[]>(meta.Properties);
         }
 
-        //把集合序列化成字符串，用于保存
+        /// <summary>
+        /// 把集合序列化成字符串，用于保存
+        /// </summary>
+        /// <param name="meta"></param>
+        /// <param name="properties"></param>
         public static void SetProperties(this RuntimeModelMeta meta, RuntimeModelMeta.ModelPropertyMeta[] properties)
         {
             meta.Properties = JsonConvert.SerializeObject(properties);
